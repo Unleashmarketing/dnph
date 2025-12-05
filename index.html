@@ -219,53 +219,53 @@
             transform: translateY(0);
         }
 
-        /* Scattered/Random Layout with More Spacing - 35 Images */
-        .gallery-item:nth-child(1) { left: 5%; top: 0; width: 320px; height: 450px; }
-        .gallery-item:nth-child(2) { left: 42%; top: 100px; width: 280px; height: 520px; }
-        .gallery-item:nth-child(3) { right: 8%; top: 200px; width: 350px; height: 420px; }
+        /* Scattered/Random Layout with More Spacing - 35 Images (50% larger) */
+        .gallery-item:nth-child(1) { left: 5%; top: 0; width: clamp(240px, 30vw, 480px); height: clamp(338px, 42vw, 675px); }
+        .gallery-item:nth-child(2) { left: 42%; top: 100px; width: clamp(210px, 26vw, 420px); height: clamp(390px, 49vw, 780px); }
+        .gallery-item:nth-child(3) { right: 8%; top: 200px; width: clamp(263px, 33vw, 525px); height: clamp(315px, 39vw, 630px); }
         
-        .gallery-item:nth-child(4) { left: 15%; top: 750px; width: 300px; height: 380px; }
-        .gallery-item:nth-child(5) { left: 48%; top: 850px; width: 340px; height: 450px; }
-        .gallery-item:nth-child(6) { right: 12%; top: 900px; width: 290px; height: 400px; }
+        .gallery-item:nth-child(4) { left: 15%; top: 750px; width: clamp(225px, 28vw, 450px); height: clamp(285px, 36vw, 570px); }
+        .gallery-item:nth-child(5) { left: 48%; top: 850px; width: clamp(255px, 32vw, 510px); height: clamp(338px, 42vw, 675px); }
+        .gallery-item:nth-child(6) { right: 12%; top: 900px; width: clamp(218px, 27vw, 435px); height: clamp(300px, 38vw, 600px); }
         
-        .gallery-item:nth-child(7) { left: 8%; top: 1450px; width: 310px; height: 420px; }
-        .gallery-item:nth-child(8) { right: 15%; top: 1500px; width: 330px; height: 480px; }
-        .gallery-item:nth-child(9) { left: 40%; top: 1600px; width: 300px; height: 400px; }
+        .gallery-item:nth-child(7) { left: 8%; top: 1450px; width: clamp(233px, 29vw, 465px); height: clamp(315px, 39vw, 630px); }
+        .gallery-item:nth-child(8) { right: 15%; top: 1500px; width: clamp(248px, 31vw, 495px); height: clamp(360px, 45vw, 720px); }
+        .gallery-item:nth-child(9) { left: 40%; top: 1600px; width: clamp(225px, 28vw, 450px); height: clamp(300px, 38vw, 600px); }
         
-        .gallery-item:nth-child(10) { left: 18%; top: 2100px; width: 320px; height: 440px; }
-        .gallery-item:nth-child(11) { right: 18%; top: 2150px; width: 290px; height: 390px; }
-        .gallery-item:nth-child(12) { left: 45%; top: 2250px; width: 310px; height: 450px; }
+        .gallery-item:nth-child(10) { left: 18%; top: 2100px; width: clamp(240px, 30vw, 480px); height: clamp(330px, 41vw, 660px); }
+        .gallery-item:nth-child(11) { right: 18%; top: 2150px; width: clamp(218px, 27vw, 435px); height: clamp(293px, 37vw, 585px); }
+        .gallery-item:nth-child(12) { left: 45%; top: 2250px; width: clamp(233px, 29vw, 465px); height: clamp(338px, 42vw, 675px); }
         
-        .gallery-item:nth-child(13) { left: 7%; top: 2800px; width: 330px; height: 420px; }
-        .gallery-item:nth-child(14) { right: 10%; top: 2900px; width: 300px; height: 480px; }
-        .gallery-item:nth-child(15) { left: 38%; top: 3000px; width: 320px; height: 410px; }
+        .gallery-item:nth-child(13) { left: 7%; top: 2800px; width: clamp(248px, 31vw, 495px); height: clamp(315px, 39vw, 630px); }
+        .gallery-item:nth-child(14) { right: 10%; top: 2900px; width: clamp(225px, 28vw, 450px); height: clamp(360px, 45vw, 720px); }
+        .gallery-item:nth-child(15) { left: 38%; top: 3000px; width: clamp(240px, 30vw, 480px); height: clamp(308px, 39vw, 615px); }
         
-        .gallery-item:nth-child(16) { left: 12%; top: 3550px; width: 290px; height: 430px; }
-        .gallery-item:nth-child(17) { right: 12%; top: 3600px; width: 340px; height: 460px; }
-        .gallery-item:nth-child(18) { left: 47%; top: 3700px; width: 310px; height: 440px; }
+        .gallery-item:nth-child(16) { left: 12%; top: 3550px; width: clamp(218px, 27vw, 435px); height: clamp(323px, 40vw, 645px); }
+        .gallery-item:nth-child(17) { right: 12%; top: 3600px; width: clamp(255px, 32vw, 510px); height: clamp(345px, 43vw, 690px); }
+        .gallery-item:nth-child(18) { left: 47%; top: 3700px; width: clamp(233px, 29vw, 465px); height: clamp(330px, 41vw, 660px); }
         
-        .gallery-item:nth-child(19) { left: 10%; top: 4250px; width: 320px; height: 400px; }
-        .gallery-item:nth-child(20) { right: 8%; top: 4350px; width: 300px; height: 470px; }
-        .gallery-item:nth-child(21) { left: 43%; top: 4450px; width: 330px; height: 420px; }
+        .gallery-item:nth-child(19) { left: 10%; top: 4250px; width: clamp(240px, 30vw, 480px); height: clamp(300px, 38vw, 600px); }
+        .gallery-item:nth-child(20) { right: 8%; top: 4350px; width: clamp(225px, 28vw, 450px); height: clamp(353px, 44vw, 705px); }
+        .gallery-item:nth-child(21) { left: 43%; top: 4450px; width: clamp(248px, 31vw, 495px); height: clamp(315px, 39vw, 630px); }
         
-        .gallery-item:nth-child(22) { left: 16%; top: 5000px; width: 310px; height: 450px; }
-        .gallery-item:nth-child(23) { right: 16%; top: 5050px; width: 320px; height: 410px; }
-        .gallery-item:nth-child(24) { left: 40%; top: 5200px; width: 300px; height: 440px; }
+        .gallery-item:nth-child(22) { left: 16%; top: 5000px; width: clamp(233px, 29vw, 465px); height: clamp(338px, 42vw, 675px); }
+        .gallery-item:nth-child(23) { right: 16%; top: 5050px; width: clamp(240px, 30vw, 480px); height: clamp(308px, 39vw, 615px); }
+        .gallery-item:nth-child(24) { left: 40%; top: 5200px; width: clamp(225px, 28vw, 450px); height: clamp(330px, 41vw, 660px); }
         
-        .gallery-item:nth-child(25) { left: 9%; top: 5750px; width: 330px; height: 460px; }
-        .gallery-item:nth-child(26) { right: 11%; top: 5850px; width: 310px; height: 430px; }
-        .gallery-item:nth-child(27) { left: 44%; top: 5950px; width: 320px; height: 450px; }
+        .gallery-item:nth-child(25) { left: 9%; top: 5750px; width: clamp(248px, 31vw, 495px); height: clamp(345px, 43vw, 690px); }
+        .gallery-item:nth-child(26) { right: 11%; top: 5850px; width: clamp(233px, 29vw, 465px); height: clamp(323px, 40vw, 645px); }
+        .gallery-item:nth-child(27) { left: 44%; top: 5950px; width: clamp(240px, 30vw, 480px); height: clamp(338px, 42vw, 675px); }
         
-        .gallery-item:nth-child(28) { left: 14%; top: 6550px; width: 300px; height: 420px; }
-        .gallery-item:nth-child(29) { right: 14%; top: 6600px; width: 340px; height: 480px; }
-        .gallery-item:nth-child(30) { left: 42%; top: 6750px; width: 310px; height: 410px; }
+        .gallery-item:nth-child(28) { left: 14%; top: 6550px; width: clamp(225px, 28vw, 450px); height: clamp(315px, 39vw, 630px); }
+        .gallery-item:nth-child(29) { right: 14%; top: 6600px; width: clamp(255px, 32vw, 510px); height: clamp(360px, 45vw, 720px); }
+        .gallery-item:nth-child(30) { left: 42%; top: 6750px; width: clamp(233px, 29vw, 465px); height: clamp(308px, 39vw, 615px); }
         
-        .gallery-item:nth-child(31) { left: 10%; top: 7300px; width: 320px; height: 440px; }
-        .gallery-item:nth-child(32) { right: 10%; top: 7400px; width: 330px; height: 460px; }
-        .gallery-item:nth-child(33) { left: 46%; top: 7500px; width: 300px; height: 430px; }
+        .gallery-item:nth-child(31) { left: 10%; top: 7300px; width: clamp(240px, 30vw, 480px); height: clamp(330px, 41vw, 660px); }
+        .gallery-item:nth-child(32) { right: 10%; top: 7400px; width: clamp(248px, 31vw, 495px); height: clamp(345px, 43vw, 690px); }
+        .gallery-item:nth-child(33) { left: 46%; top: 7500px; width: clamp(225px, 28vw, 450px); height: clamp(323px, 40vw, 645px); }
         
-        .gallery-item:nth-child(34) { left: 12%; top: 8050px; width: 310px; height: 450px; }
-        .gallery-item:nth-child(35) { right: 15%; top: 8100px; width: 340px; height: 470px; }
+        .gallery-item:nth-child(34) { left: 12%; top: 8050px; width: clamp(233px, 29vw, 465px); height: clamp(338px, 42vw, 675px); }
+        .gallery-item:nth-child(35) { right: 15%; top: 8100px; width: clamp(255px, 32vw, 510px); height: clamp(353px, 44vw, 705px); }
 
         .gallery-images::after {
             content: '';
@@ -273,24 +273,8 @@
             height: 8700px;
         }
 
-        /* Scale images proportionally with viewport */
-        @media (max-width: 1600px) {
-            .gallery-item {
-                transform: scale(0.95);
-            }
-        }
-
-        @media (max-width: 1400px) {
-            .gallery-item {
-                transform: scale(0.85);
-            }
-        }
-
+        /* Remove all scale transforms for desktop */
         @media (max-width: 1200px) {
-            .gallery-item {
-                transform: scale(0.75);
-            }
-            
             .hero-title {
                 font-size: 4rem;
             }
