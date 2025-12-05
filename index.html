@@ -273,6 +273,45 @@
             height: 8700px;
         }
 
+        /* Prevent overlap on smaller desktop screens */
+        @media (max-width: 1400px) {
+            .gallery-item:nth-child(1) { left: 8%; }
+            .gallery-item:nth-child(2) { left: 40%; }
+            .gallery-item:nth-child(3) { right: 8%; }
+            .gallery-item:nth-child(4) { left: 12%; }
+            .gallery-item:nth-child(5) { left: 45%; }
+            .gallery-item:nth-child(6) { right: 10%; }
+            .gallery-item:nth-child(7) { left: 10%; }
+            .gallery-item:nth-child(8) { right: 12%; }
+            .gallery-item:nth-child(9) { left: 38%; }
+            .gallery-item:nth-child(10) { left: 15%; }
+            .gallery-item:nth-child(11) { right: 15%; }
+            .gallery-item:nth-child(12) { left: 42%; }
+            .gallery-item:nth-child(13) { left: 10%; }
+            .gallery-item:nth-child(14) { right: 12%; }
+            .gallery-item:nth-child(15) { left: 36%; }
+            .gallery-item:nth-child(16) { left: 14%; }
+            .gallery-item:nth-child(17) { right: 14%; }
+            .gallery-item:nth-child(18) { left: 44%; }
+            .gallery-item:nth-child(19) { left: 12%; }
+            .gallery-item:nth-child(20) { right: 10%; }
+            .gallery-item:nth-child(21) { left: 40%; }
+            .gallery-item:nth-child(22) { left: 14%; }
+            .gallery-item:nth-child(23) { right: 14%; }
+            .gallery-item:nth-child(24) { left: 38%; }
+            .gallery-item:nth-child(25) { left: 11%; }
+            .gallery-item:nth-child(26) { right: 13%; }
+            .gallery-item:nth-child(27) { left: 41%; }
+            .gallery-item:nth-child(28) { left: 13%; }
+            .gallery-item:nth-child(29) { right: 13%; }
+            .gallery-item:nth-child(30) { left: 39%; }
+            .gallery-item:nth-child(31) { left: 12%; }
+            .gallery-item:nth-child(32) { right: 12%; }
+            .gallery-item:nth-child(33) { left: 43%; }
+            .gallery-item:nth-child(34) { left: 14%; }
+            .gallery-item:nth-child(35) { right: 14%; }
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .hero-title {
@@ -283,9 +322,46 @@
                 font-size: 2.5rem;
             }
 
+            /* Reduce image sizes but keep spacing */
             .gallery-item {
-                width: 280px !important;
+                width: 260px !important;
             }
+
+            .gallery-item:nth-child(1) { left: 10%; }
+            .gallery-item:nth-child(2) { left: 38%; }
+            .gallery-item:nth-child(3) { right: 10%; }
+            .gallery-item:nth-child(4) { left: 14%; }
+            .gallery-item:nth-child(5) { left: 43%; }
+            .gallery-item:nth-child(6) { right: 12%; }
+            .gallery-item:nth-child(7) { left: 12%; }
+            .gallery-item:nth-child(8) { right: 14%; }
+            .gallery-item:nth-child(9) { left: 36%; }
+            .gallery-item:nth-child(10) { left: 16%; }
+            .gallery-item:nth-child(11) { right: 16%; }
+            .gallery-item:nth-child(12) { left: 40%; }
+            .gallery-item:nth-child(13) { left: 12%; }
+            .gallery-item:nth-child(14) { right: 14%; }
+            .gallery-item:nth-child(15) { left: 34%; }
+            .gallery-item:nth-child(16) { left: 15%; }
+            .gallery-item:nth-child(17) { right: 15%; }
+            .gallery-item:nth-child(18) { left: 42%; }
+            .gallery-item:nth-child(19) { left: 14%; }
+            .gallery-item:nth-child(20) { right: 12%; }
+            .gallery-item:nth-child(21) { left: 38%; }
+            .gallery-item:nth-child(22) { left: 15%; }
+            .gallery-item:nth-child(23) { right: 15%; }
+            .gallery-item:nth-child(24) { left: 36%; }
+            .gallery-item:nth-child(25) { left: 13%; }
+            .gallery-item:nth-child(26) { right: 14%; }
+            .gallery-item:nth-child(27) { left: 39%; }
+            .gallery-item:nth-child(28) { left: 14%; }
+            .gallery-item:nth-child(29) { right: 14%; }
+            .gallery-item:nth-child(30) { left: 37%; }
+            .gallery-item:nth-child(31) { left: 14%; }
+            .gallery-item:nth-child(32) { right: 14%; }
+            .gallery-item:nth-child(33) { left: 41%; }
+            .gallery-item:nth-child(34) { left: 15%; }
+            .gallery-item:nth-child(35) { right: 15%; }
         }
 
         /* Tablet Version */
