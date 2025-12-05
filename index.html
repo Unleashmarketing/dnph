@@ -158,6 +158,74 @@
             transform: scale(1.05);
         }
 
+        /* Animation for Hero Section */
+        nav {
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-labels {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.3s forwards;
+        }
+
+        .hero-title {
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 0.7s forwards;
+        }
+
+        .hero-description {
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll Animation for Gallery */
+        .gallery-item {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Scattered/Random Layout with More Spacing */
         .gallery-item:nth-child(1) {
             left: 5%;
@@ -290,6 +358,32 @@
     </style>
 </head>
 <body>
+    <script>
+        // Scroll Animation for Gallery Items
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all gallery items when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                // Add staggered delay for each item
+                item.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(item);
+            });
+        });
+    </script>
+    
     <!-- Hero Section -->
     <section class="hero">
         <nav>
