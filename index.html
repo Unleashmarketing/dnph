@@ -507,9 +507,7 @@
         // Observe all gallery items when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryItems.forEach((item, index) => {
-                // Add staggered delay for each item
-                item.style.transitionDelay = `${index * 0.1}s`;
+            galleryItems.forEach((item) => {
                 observer.observe(item);
             });
         });
