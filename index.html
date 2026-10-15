@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dung Nguyen Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +37,7 @@
   }
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
+  [hidden]{display:none!important;}
 
   .page{
     display:flex;
@@ -82,6 +85,9 @@
   .topbar nav a{
     text-decoration:underline;
     text-underline-offset:3px;
+  }
+  .topbar nav a.active{
+    font-weight:600;
   }
 
   .maincard{
@@ -151,6 +157,17 @@
   @media (min-width:860px){
     .workpanel{height:100%;overflow:hidden;}
   }
+  .panel-nav{
+    padding:24px 30px 0;
+    flex:0 0 auto;
+  }
+  .panel-nav a{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
   .works-heading{
     margin:0;
     padding:30px 30px 16px;
@@ -159,6 +176,79 @@
     font-size:28px;
     letter-spacing:-0.04em;
     flex:0 0 auto;
+  }
+  .panel-body{
+    flex:1 1 auto;
+    overflow-y:auto;
+    padding:0 30px 40px;
+  }
+  .info-body{
+    max-width:56ch;
+  }
+  .info-body p{
+    margin:0 0 18px;
+    font-size:15px;
+    line-height:1.65;
+  }
+  .info-body p:last-child{
+    margin-bottom:0;
+  }
+
+  .kontakt-form{
+    max-width:460px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .kontakt-form .field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .kontakt-form label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .kontakt-form input,
+  .kontakt-form textarea{
+    border:none;
+    border-bottom:1px solid var(--line);
+    background:transparent;
+    font-family:inherit;
+    font-size:15px;
+    color:var(--text);
+    padding:8px 0;
+    outline:none;
+    resize:vertical;
+  }
+  .kontakt-form input:focus,
+  .kontakt-form textarea:focus{
+    border-bottom-color:var(--text);
+  }
+  .kontakt-form button{
+    align-self:flex-start;
+    margin-top:4px;
+    background:var(--text);
+    color:var(--card);
+    border:none;
+    padding:13px 26px;
+    font-family:inherit;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    cursor:pointer;
+  }
+  .kontakt-form button:disabled{
+    opacity:.55;
+    cursor:default;
+  }
+  .form-status{
+    margin:0;
+    font-size:13px;
+  }
+  .form-status.error{
+    color:#b3261e;
   }
   .gallery{
     display:grid;
@@ -200,8 +290,8 @@
     <header class="topbar">
       <div class="status"><span id="city">Frankfurt</span> · <span id="clock">—</span></div>
       <nav>
-        <a href="#" onclick="return false;">Info</a>
-        <a href="https://www.dnph.de/contact" target="_blank" rel="noopener">Contact</a>
+        <a href="#" data-view="info">Info</a>
+        <a href="#" data-view="kontakt">Kontakt</a>
       </nav>
     </header>
 
@@ -211,18 +301,19 @@
       </div>
       <h1 class="name">Dung<br>Nguyen</h1>
       <p class="desc">Fashion- und Beautyfotograf mit ambitionierter, ästhetischer Bildsprache für Marken, Agenturen und Models. Basiert in Frankfurt.</p>
-      <a class="avail" href="https://www.dnph.de/contact" target="_blank" rel="noopener">Verfügbar für Projekte →</a>
+      <a class="avail" href="#" data-view="kontakt">Verfügbar für Projekte →</a>
     </section>
 
     <footer class="socialbar">
       <a href="https://www.instagram.com/dnph.photography/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.dnph.de" target="_blank" rel="noopener">dnph.de</a>
     </footer>
   </aside>
 
   <main class="workpanel">
-    <h2 class="works-heading">Works</h2>
-    <div class="gallery">
+    <div class="panel-nav" id="panelBack" hidden><a href="#" data-view="works">← Works</a></div>
+    <h2 class="works-heading" id="panelHeading">Works</h2>
+
+    <div class="gallery" id="view-works">
       <div class="gallery-col">
         <figure style="aspect-ratio:700/1052"><img src="images/g01.jpg" alt="Fashion-Shooting" loading="lazy"></figure>
         <figure style="aspect-ratio:700/1052"><img src="images/g03.jpg" alt="Beauty-Porträt" loading="lazy"></figure>
@@ -274,6 +365,37 @@
         <figure style="aspect-ratio:700/1012"><img src="images/g46.jpg" alt="Social Marionettes" loading="lazy"></figure>
       </div>
     </div>
+
+    <div class="panel-body info-body" id="view-info" hidden>
+      <p>Ich heiße Dung und bin ambitionierter Fashion- und Beautyfotograf. Momentan studiere ich Kommunikationswissenschaften an der Johannes Gutenberg-Universität Mainz und verfolge nebenbei meine Leidenschaft des Fotografierens.</p>
+      <p>Ich lasse mich sowohl von alltäglichen Situationen als auch von gesellschaftlichen Ereignissen inspirieren. Hinzu kommen Erfahrungen aus der Zusammenarbeit mit verschiedenen Agenturen und Models. In meine Arbeit fließt stets viel Ehrgeiz und eine ästhetische Perspektive mit ein, wodurch kunstvolle und kreative Inhalte entstehen. Dabei stehe ich im engen Kontakt mit vielseitigen Stylisten und Make-up-Artists, um sowohl kleinere als auch größere Produktionen umzusetzen.</p>
+      <p>Bei Interesse freue ich mich darauf, dich kennenzulernen und kreative Ideen gemeinsam umzusetzen.</p>
+    </div>
+
+    <div class="panel-body" id="view-kontakt" hidden>
+      <form class="kontakt-form" id="kontaktForm" action="https://formspree.io/f/mwlvalgq" method="POST">
+        <div class="field">
+          <label for="f-first">Vorname</label>
+          <input type="text" id="f-first" name="first_name" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="f-last">Nachname</label>
+          <input type="text" id="f-last" name="last_name" autocomplete="family-name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">E-Mail-Adresse</label>
+          <input type="email" id="f-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-message">Nachricht</label>
+          <textarea id="f-message" name="message" rows="5" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Neue Anfrage über dnph Portfolio">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <button type="submit">Absenden →</button>
+        <p class="form-status" id="kontaktStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </main>
 </div>
 
@@ -291,4 +413,55 @@
   }
   updateClock();
   setInterval(updateClock, 1000);
+
+  const HEADINGS = { works: 'Works', info: 'Info', kontakt: 'Kontakt' };
+
+  function showView(view){
+    if (!HEADINGS[view]) view = 'works';
+    document.getElementById('panelHeading').textContent = HEADINGS[view];
+    document.getElementById('panelBack').hidden = view === 'works';
+    ['works', 'info', 'kontakt'].forEach(v => {
+      document.getElementById('view-' + v).hidden = v !== view;
+    });
+    document.querySelectorAll('.topbar nav a[data-view]').forEach(a => {
+      a.classList.toggle('active', a.dataset.view === view);
+    });
+    document.querySelector('.workpanel').scrollTop = 0;
+  }
+
+  document.querySelectorAll('[data-view]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      showView(el.dataset.view);
+    });
+  });
+
+  const kontaktForm = document.getElementById('kontaktForm');
+  if (kontaktForm) {
+    kontaktForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = document.getElementById('kontaktStatus');
+      const btn = kontaktForm.querySelector('button[type="submit"]');
+      status.classList.remove('error');
+      status.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet …';
+      try {
+        const res = await fetch(kontaktForm.action, {
+          method: 'POST',
+          body: new FormData(kontaktForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error('request failed');
+        kontaktForm.reset();
+        status.textContent = 'Danke für deine Nachricht — ich melde mich schnellstmöglich zurück.';
+        btn.textContent = 'Gesendet ✓';
+      } catch (err) {
+        status.classList.add('error');
+        status.textContent = 'Senden fehlgeschlagen. Bitte versuch es erneut oder schreib mir direkt per Instagram.';
+        btn.disabled = false;
+        btn.textContent = 'Absenden →';
+      }
+    });
+  }
 </script>
