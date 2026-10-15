@@ -1,653 +1,261 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dung Nguyen - Fotograf Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Times New Roman', serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Hero Section */
-        .hero {
-            background-color: #000;
-            color: #fff;
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 4rem;
-            position: relative;
-            z-index: 100;
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
-        }
-
-        .logo svg {
-            width: 100%;
-            height: 100%;
-            fill: #fff;
-        }
-
-        .cta-button {
-            padding: 0.8rem 2rem;
-            border: 1px solid #fff;
-            border-radius: 2px;
-            background: transparent;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
-        }
-
-        .cta-button:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        /* Hero Content */
-        .hero-content {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-            padding: 4rem 4rem 6rem;
-            align-items: center;
-        }
-
-        .hero-left {
-            flex: 1;
-        }
-
-        .hero-labels {
-            display: flex;
-            gap: 8rem;
-            margin-bottom: 6rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #666;
-        }
-
-        .hero-title {
-            font-size: 5.5rem;
-            font-weight: 300;
-            letter-spacing: 0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-subtitle {
-            font-size: 3.5rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-        }
-
-        .hero-right {
-            max-width: 500px;
-            padding-left: 4rem;
-        }
-
-        .hero-description {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            letter-spacing: 0.08em;
-            color: #888;
-            text-align: justify;
-        }
-
-        .hero-description strong {
-            color: #fff;
-            font-weight: 400;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background-color: #000;
-            padding: 6rem 4rem;
-            min-height: 150vh;
-        }
-
-        .gallery-images {
-            position: relative;
-            width: 100%;
-            max-width: 1600px;
-            margin: 0;
-        }
-
-        .gallery-item {
-            position: absolute;
-            overflow: hidden;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Animation for Hero Section */
-        nav {
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-labels {
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 0.3s forwards;
-        }
-
-        .hero-title {
-            opacity: 0;
-            animation: slideInLeft 1s ease-out 0.5s forwards;
-        }
-
-        .hero-subtitle {
-            opacity: 0;
-            animation: slideInLeft 1s ease-out 0.7s forwards;
-        }
-
-        .hero-description {
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.9s forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Scroll Animation for Gallery */
-        .gallery-item {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .gallery-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Scattered/Random Layout - 35 Images (smaller, third column more right) */
-        .gallery-item:nth-child(1) { left: 5%; top: 0; width: clamp(180px, 22vw, 360px); height: clamp(253px, 31vw, 506px); }
-        .gallery-item:nth-child(2) { left: 42%; top: 200px; width: clamp(158px, 20vw, 315px); height: clamp(293px, 37vw, 585px); }
-        .gallery-item:nth-child(3) { right: 3%; top: 400px; width: clamp(197px, 25vw, 394px); height: clamp(236px, 30vw, 473px); }
-        
-        .gallery-item:nth-child(4) { left: 15%; top: 1100px; width: clamp(169px, 21vw, 338px); height: clamp(214px, 27vw, 428px); }
-        .gallery-item:nth-child(5) { left: 48%; top: 1300px; width: clamp(191px, 24vw, 383px); height: clamp(253px, 31vw, 506px); }
-        .gallery-item:nth-child(6) { right: 4%; top: 1500px; width: clamp(164px, 20vw, 326px); height: clamp(225px, 28vw, 450px); }
-        
-        .gallery-item:nth-child(7) { left: 8%; top: 2250px; width: clamp(175px, 22vw, 349px); height: clamp(236px, 30vw, 473px); }
-        .gallery-item:nth-child(8) { right: 5%; top: 2450px; width: clamp(186px, 23vw, 371px); height: clamp(270px, 34vw, 540px); }
-        .gallery-item:nth-child(9) { left: 40%; top: 2650px; width: clamp(169px, 21vw, 338px); height: clamp(225px, 28vw, 450px); }
-        
-        .gallery-item:nth-child(10) { left: 18%; top: 3350px; width: clamp(180px, 22vw, 360px); height: clamp(248px, 31vw, 495px); }
-        .gallery-item:nth-child(11) { right: 6%; top: 3550px; width: clamp(164px, 20vw, 326px); height: clamp(220px, 27vw, 439px); }
-        .gallery-item:nth-child(12) { left: 45%; top: 3750px; width: clamp(175px, 22vw, 349px); height: clamp(253px, 31vw, 506px); }
-        
-        .gallery-item:nth-child(13) { left: 7%; top: 4500px; width: clamp(186px, 23vw, 371px); height: clamp(236px, 30vw, 473px); }
-        .gallery-item:nth-child(14) { right: 4%; top: 4700px; width: clamp(169px, 21vw, 338px); height: clamp(270px, 34vw, 540px); }
-        .gallery-item:nth-child(15) { left: 38%; top: 4900px; width: clamp(180px, 22vw, 360px); height: clamp(231px, 29vw, 461px); }
-        
-        .gallery-item:nth-child(16) { left: 12%; top: 5600px; width: clamp(164px, 20vw, 326px); height: clamp(242px, 30vw, 484px); }
-        .gallery-item:nth-child(17) { right: 5%; top: 5800px; width: clamp(191px, 24vw, 383px); height: clamp(259px, 32vw, 518px); }
-        .gallery-item:nth-child(18) { left: 47%; top: 6000px; width: clamp(175px, 22vw, 349px); height: clamp(248px, 31vw, 495px); }
-        
-        .gallery-item:nth-child(19) { left: 10%; top: 6750px; width: clamp(180px, 22vw, 360px); height: clamp(225px, 28vw, 450px); }
-        .gallery-item:nth-child(20) { right: 3%; top: 6950px; width: clamp(169px, 21vw, 338px); height: clamp(265px, 33vw, 529px); }
-        .gallery-item:nth-child(21) { left: 43%; top: 7150px; width: clamp(186px, 23vw, 371px); height: clamp(236px, 30vw, 473px); }
-        
-        .gallery-item:nth-child(22) { left: 16%; top: 7850px; width: clamp(175px, 22vw, 349px); height: clamp(253px, 31vw, 506px); }
-        .gallery-item:nth-child(23) { right: 6%; top: 8050px; width: clamp(180px, 22vw, 360px); height: clamp(231px, 29vw, 461px); }
-        .gallery-item:nth-child(24) { left: 40%; top: 8250px; width: clamp(169px, 21vw, 338px); height: clamp(248px, 31vw, 495px); }
-        
-        .gallery-item:nth-child(25) { left: 9%; top: 8950px; width: clamp(186px, 23vw, 371px); height: clamp(259px, 32vw, 518px); }
-        .gallery-item:nth-child(26) { right: 4%; top: 9150px; width: clamp(175px, 22vw, 349px); height: clamp(242px, 30vw, 484px); }
-        .gallery-item:nth-child(27) { left: 44%; top: 9350px; width: clamp(180px, 22vw, 360px); height: clamp(253px, 31vw, 506px); }
-        
-        .gallery-item:nth-child(28) { left: 14%; top: 10100px; width: clamp(169px, 21vw, 338px); height: clamp(236px, 30vw, 473px); }
-        .gallery-item:nth-child(29) { right: 5%; top: 10300px; width: clamp(191px, 24vw, 383px); height: clamp(270px, 34vw, 540px); }
-        .gallery-item:nth-child(30) { left: 42%; top: 10500px; width: clamp(175px, 22vw, 349px); height: clamp(231px, 29vw, 461px); }
-        
-        .gallery-item:nth-child(31) { left: 10%; top: 11250px; width: clamp(180px, 22vw, 360px); height: clamp(248px, 31vw, 495px); }
-        .gallery-item:nth-child(32) { right: 4%; top: 11450px; width: clamp(186px, 23vw, 371px); height: clamp(259px, 32vw, 518px); }
-        .gallery-item:nth-child(33) { left: 46%; top: 11650px; width: clamp(169px, 21vw, 338px); height: clamp(242px, 30vw, 484px); }
-        
-        .gallery-item:nth-child(34) { left: 12%; top: 12350px; width: clamp(175px, 22vw, 349px); height: clamp(253px, 31vw, 506px); }
-        .gallery-item:nth-child(35) { right: 3%; top: 12550px; width: clamp(191px, 24vw, 383px); height: clamp(265px, 33vw, 529px); }
-
-        .gallery-images::after {
-            content: '';
-            display: block;
-            height: 13200px;
-        }
-
-        /* Remove all scale transforms for desktop */
-        @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 4rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Tablet Version */
-        @media (max-width: 1024px) {
-            nav {
-                padding: 1.5rem 3rem;
-            }
-
-            .hero-content {
-                padding: 3rem 3rem 4rem;
-            }
-
-            .hero-labels {
-                gap: 4rem;
-                margin-bottom: 4rem;
-            }
-
-            .hero-title {
-                font-size: 3.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 2.2rem;
-            }
-
-            .hero-right {
-                max-width: 400px;
-                padding-left: 3rem;
-            }
-
-            .gallery {
-                padding: 4rem 3rem;
-            }
-
-            /* Tablet: 2 columns layout */
-            .gallery-item:nth-child(odd) {
-                left: 5% !important;
-                right: auto !important;
-                width: 280px !important;
-            }
-
-            .gallery-item:nth-child(even) {
-                left: auto !important;
-                right: 5% !important;
-                width: 280px !important;
-            }
-
-            /* Recalculate vertical positions for tablet */
-            .gallery-item:nth-child(1) { top: 0 !important; }
-            .gallery-item:nth-child(2) { top: 100px !important; }
-            .gallery-item:nth-child(3) { top: 750px !important; }
-            .gallery-item:nth-child(4) { top: 800px !important; }
-            .gallery-item:nth-child(5) { top: 1400px !important; }
-            .gallery-item:nth-child(6) { top: 1500px !important; }
-            .gallery-item:nth-child(7) { top: 2100px !important; }
-            .gallery-item:nth-child(8) { top: 2150px !important; }
-            .gallery-item:nth-child(9) { top: 2750px !important; }
-            .gallery-item:nth-child(10) { top: 2850px !important; }
-            .gallery-item:nth-child(11) { top: 3450px !important; }
-            .gallery-item:nth-child(12) { top: 3500px !important; }
-            .gallery-item:nth-child(13) { top: 4100px !important; }
-            .gallery-item:nth-child(14) { top: 4200px !important; }
-            .gallery-item:nth-child(15) { top: 4800px !important; }
-            .gallery-item:nth-child(16) { top: 4850px !important; }
-            .gallery-item:nth-child(17) { top: 5450px !important; }
-            .gallery-item:nth-child(18) { top: 5550px !important; }
-            .gallery-item:nth-child(19) { top: 6150px !important; }
-            .gallery-item:nth-child(20) { top: 6250px !important; }
-            .gallery-item:nth-child(21) { top: 6850px !important; }
-            .gallery-item:nth-child(22) { top: 6950px !important; }
-            .gallery-item:nth-child(23) { top: 7550px !important; }
-            .gallery-item:nth-child(24) { top: 7600px !important; }
-            .gallery-item:nth-child(25) { top: 8200px !important; }
-            .gallery-item:nth-child(26) { top: 8300px !important; }
-            .gallery-item:nth-child(27) { top: 8900px !important; }
-            .gallery-item:nth-child(28) { top: 8950px !important; }
-            .gallery-item:nth-child(29) { top: 9550px !important; }
-            .gallery-item:nth-child(30) { top: 9650px !important; }
-            .gallery-item:nth-child(31) { top: 10250px !important; }
-            .gallery-item:nth-child(32) { top: 10350px !important; }
-            .gallery-item:nth-child(33) { top: 10950px !important; }
-            .gallery-item:nth-child(34) { top: 11050px !important; }
-            .gallery-item:nth-child(35) { top: 11650px !important; }
-
-            .gallery-images::after {
-                height: 12300px;
-            }
-        }
-
-        /* Mobile Version */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            .logo {
-                width: 35px;
-                height: 35px;
-            }
-
-            .cta-button {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .hero-content {
-                flex-direction: column;
-                padding: 2rem;
-            }
-
-            .hero-labels {
-                gap: 2rem;
-                margin-bottom: 3rem;
-                font-size: 0.65rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.8rem;
-            }
-
-            .hero-right {
-                max-width: 100%;
-                padding-left: 0;
-                margin-top: 3rem;
-            }
-
-            .hero-description {
-                font-size: 0.85rem;
-            }
-
-            .gallery {
-                padding: 3rem 1.5rem;
-            }
-
-            /* Mobile: Alternating 2 columns and 1 large image */
-            .gallery-images {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-                position: static;
-            }
-
-            .gallery-item {
-                position: relative !important;
-                width: 100% !important;
-                height: 250px !important;
-                left: auto !important;
-                right: auto !important;
-                top: auto !important;
-                transform: none !important;
-                margin-bottom: 0;
-            }
-
-            /* Every 3rd image spans full width (large) */
-            .gallery-item:nth-child(3n) {
-                grid-column: 1 / -1;
-                height: 350px !important;
-            }
-
-            .gallery-images::after {
-                display: none;
-            }
-        }
-
-        /* Extra small mobile */
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.5rem;
-            }
-
-            .hero-labels {
-                flex-direction: column;
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .gallery {
-                padding: 2rem 1rem;
-            }
-
-            .gallery-images {
-                gap: 0.8rem;
-            }
-
-            .gallery-item {
-                height: 220px !important;
-            }
-
-            .gallery-item:nth-child(3n) {
-                height: 300px !important;
-            }
-        }
-    </style>
-</head>
-<body>
-    <script>
-        // Scroll Animation for Gallery Items
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all gallery items when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryItems.forEach((item) => {
-                observer.observe(item);
-            });
-        });
-    </script>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <nav>
-            <div class="logo">
-                <svg viewBox="0 0 40 40">
-                    <polygon points="20,5 35,35 5,35"/>
-                </svg>
-            </div>
-            <button class="cta-button">Kontakt</button>
-        </nav>
-
-        <div class="hero-content">
-            <div class="hero-left">
-                <div class="hero-labels">
-                    <span>FREELANCER</span>
-                    <span>ANSÄSSIG IN DEUTSCHLAND</span>
-                </div>
-                <h1 class="hero-title">DUNG NGUYEN</h1>
-                <h2 class="hero-subtitle">FOTOGRAF</h2>
-            </div>
-
-            <div class="hero-right">
-                <p class="hero-description">
-                    <strong>FREELANCE FOTOGRAF ANSÄSSIG IN DEUTSCHLAND (MUTTERSTADT), DER ES LIEBT, AUTHENTISCHE MOMENTE EINZUFANGEN & VISUELLE GESCHICHTEN ZU ERZÄHLEN.</strong> 
-                    ARBEITET SEIT 2015 ALS FOTOGRAF — SPEZIALISIERT AUF PORTRAIT-, EVENT- UND ARCHITEKTURFOTOGRAFIE.
-                </p>
-            </div>
-        </div>
+<title>Owen Ashcroft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ededed;
+    --card:#ffffff;
+    --text:#0a0a0a;
+    --line:#dcdcdc;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#ededed;
+      --card:#ffffff;
+      --text:#0a0a0a;
+      --line:#dcdcdc;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#ededed;
+    --card:#ffffff;
+    --text:#0a0a0a;
+    --line:#dcdcdc;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Funnel Sans","Funnel Sans Placeholder",-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .page{
+    display:flex;
+    gap:10px;
+    padding:20px;
+    min-height:100%;
+  }
+  @media (min-width:860px){
+    .page{height:100vh;}
+  }
+
+  /* ---------- left column ---------- */
+  .sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+    flex-shrink:0;
+  }
+  @media (min-width:860px){
+    .sidebar{width:min(32vw,440px);height:100%;}
+  }
+
+  .topbar{
+    background:var(--card);
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex:0 0 auto;
+  }
+  .topbar .status{
+    font-size:13px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    font-variant-numeric:tabular-nums;
+  }
+  .topbar nav{
+    display:flex;
+    gap:22px;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  .topbar nav a{
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  .maincard{
+    background:var(--card);
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    flex:1 1 auto;
+  }
+  .portrait{
+    width:clamp(150px,22vw,220px);
+    aspect-ratio:1/1;
+    overflow:hidden;
+    background:#111;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;}
+
+  h1.name{
+    margin:0;
+    font-weight:300;
+    text-transform:uppercase;
+    font-size:clamp(34px,4.6vw,64px);
+    line-height:0.92;
+    letter-spacing:-0.04em;
+  }
+  .desc{
+    margin:0;
+    max-width:34ch;
+    font-size:14px;
+    line-height:1.4;
+    text-transform:uppercase;
+    letter-spacing:0;
+  }
+  .avail{
+    font-size:15px;
+    text-transform:uppercase;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    width:fit-content;
+  }
+
+  .socialbar{
+    background:var(--card);
+    padding:20px;
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+    flex:0 0 auto;
+  }
+  .socialbar a{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ---------- right column ---------- */
+  .workpanel{
+    background:var(--card);
+    flex:1 1 auto;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+  }
+  @media (min-width:860px){
+    .workpanel{height:100%;overflow:hidden;}
+  }
+  .works-heading{
+    margin:0;
+    padding:30px 30px 16px;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:28px;
+    letter-spacing:-0.04em;
+    flex:0 0 auto;
+  }
+  .gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    padding:0 20px 20px;
+    overflow-y:auto;
+    flex:1 1 auto;
+    scrollbar-width:thin;
+  }
+  .gallery-col{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .gallery-col figure{
+    margin:0;
+    overflow:hidden;
+    background:#eee;
+  }
+  .gallery-col img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .gallery-col figure:hover img{
+    transform:scale(1.04);
+  }
+
+  @media (max-width:859px){
+    .page{flex-direction:column;}
+    .gallery{overflow-y:visible;}
+  }
+</style>
+
+<div class="page">
+  <aside class="sidebar">
+    <header class="topbar">
+      <div class="status"><span id="city">New York</span> · <span id="clock">—</span></div>
+      <nav>
+        <a href="#" onclick="return false;">Info</a>
+        <a href="#" onclick="return false;">Contact</a>
+      </nav>
+    </header>
+
+    <section class="maincard">
+      <div class="portrait">
+        <img src="images/portrait.png" alt="Schwarz-weiß Portrait von Owen Ashcroft, Marken- und Verpackungsdesigner aus New York">
+      </div>
+      <h1 class="name">Owen<br>Ashcroft</h1>
+      <p class="desc">A designer working across brand and packaging — building considered, lasting work for modern companies. Based in New York.</p>
+      <a class="avail" href="#" onclick="return false;">Available for work →</a>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery">
-        <div class="gallery-images">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=800&fit=crop" alt="Portrait 1">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&h=800&fit=crop" alt="Produktfotografie">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&h=800&fit=crop" alt="Portrait 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&h=800&fit=crop" alt="Natur">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=800&h=800&fit=crop" alt="Architektur">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=800&fit=crop" alt="Portrait 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1000&h=800&fit=crop" alt="Urban">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=900&fit=crop" alt="Portrait 4">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=800&fit=crop" alt="Portrait 5">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&h=800&fit=crop" alt="Portrait 6">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&h=800&fit=crop" alt="Portrait 7">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=1000&h=800&fit=crop" alt="Landschaft">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=800&h=800&fit=crop" alt="Architektur 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=800&h=800&fit=crop" alt="Portrait 8">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=800&fit=crop" alt="Portrait 9">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=1000&h=800&fit=crop" alt="Natur 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?w=800&h=800&fit=crop" alt="Portrait 10">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=1000&h=800&fit=crop" alt="Urban 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1542206395-9feb3edaa68d?w=800&h=800&fit=crop" alt="Portrait 11">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=800&h=800&fit=crop" alt="Portrait 12">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=1000&h=800&fit=crop" alt="Landschaft 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&h=800&fit=crop" alt="Portrait 13">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=800&h=800&fit=crop" alt="Portrait 14">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&h=800&fit=crop" alt="Portrait 15">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1000&h=800&fit=crop" alt="Natur 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=800&h=800&fit=crop" alt="Portrait 16">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?w=800&h=800&fit=crop" alt="Portrait 17">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?w=1000&h=800&fit=crop" alt="Architektur 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1503185912284-5271ff81b9a8?w=800&h=800&fit=crop" alt="Portrait 18">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?w=800&h=800&fit=crop" alt="Portrait 19">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=1000&h=800&fit=crop" alt="Landschaft 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=800&h=800&fit=crop" alt="Portrait 20">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=800&fit=crop" alt="Portrait 21">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=800&fit=crop" alt="Portrait 22">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=800&h=800&fit=crop" alt="Portrait 23">
-            </div>
-        </div>
-    </section>
-</body>
-</html>
+    <footer class="socialbar">
+      <a href="https://x.com/kadircalik" target="_blank" rel="noopener">Twitter (X)</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+    </footer>
+  </aside>
+
+  <main class="workpanel">
+    <h2 class="works-heading">Works</h2>
+    <div class="gallery">
+      <div class="gallery-col">
+        <figure style="aspect-ratio:900/606"><img src="images/c1-1.jpg" alt="Cremefarbene Konfektboxen auf einem Tisch mit weichem Fensterlicht-Schatten" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c1-2.webp" alt="Hand hält eine dunkle Flasche und ein Coupe-Glas vor grünem Samt" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c1-3.webp" alt="Illustrierter Pappbecher auf einem gelb gefliesten Tisch neben einem Kaktus" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c1-4.webp" alt="Kerze und Box auf dunklem Samt mit warm brennender Flamme" loading="lazy"></figure>
+        <figure style="aspect-ratio:680/906"><img src="images/c1-5.webp" alt="Grüner, goldgeprägter Ordner auf einem Silbertablett über geripptem Stoff" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c1-6.webp" alt="Weiße Dosen mit fließender schwarzer Schrift vor dunklem Hintergrund" loading="lazy"></figure>
+      </div>
+      <div class="gallery-col">
+        <figure style="aspect-ratio:3/4"><img src="images/c2-1.webp" alt="Gestapelte gemusterte Boxen vor einer orangefarbenen Art-déco-Fliesenwand" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c2-2.webp" alt="Runde Dose mit Porträtdruck-Deckel auf Marmorfliesenboden" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c2-3.webp" alt="Silbern geprägte Kosmetikbox mit geprägtem Flaschendetail" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c2-4.webp" alt="Papiertuben mit kräftigem grün-orangem Scherenschnitt-Muster" loading="lazy"></figure>
+        <figure style="aspect-ratio:3/4"><img src="images/c2-5.webp" alt="Gemusterte Tragebox vor rotem gemustertem Hintergrund gehalten" loading="lazy"></figure>
+        <figure style="aspect-ratio:900/600"><img src="images/c2-6.webp" alt="Cremefarbene Papiertragetasche mit goldenem Schriftzug und hartem Schatten" loading="lazy"></figure>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function updateClock(){
+    try{
+      const fmt = new Intl.DateTimeFormat('en-US',{
+        timeZone:'America/New_York',
+        hour:'numeric',
+        minute:'2-digit',
+        hour12:true
+      });
+      document.getElementById('clock').textContent = fmt.format(new Date());
+    }catch(e){}
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
