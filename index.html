@@ -27,7 +27,7 @@
   }
 
   *{box-sizing:border-box;}
-  html,body{height:100%;}
+  html,body{height:100%;overscroll-behavior:none;}
   body{
     margin:0;
     background:var(--bg);
@@ -46,7 +46,7 @@
     min-height:100%;
   }
   @media (min-width:860px){
-    .page{height:100vh;}
+    .page{height:100vh;overflow:hidden;}
   }
 
   /* ---------- left column ---------- */
@@ -180,6 +180,8 @@
   .panel-body{
     flex:1 1 auto;
     overflow-y:auto;
+    overscroll-behavior:contain;
+    overflow-anchor:none;
     padding:0 30px 40px;
   }
   .info-body{
@@ -253,9 +255,12 @@
   .gallery{
     display:grid;
     grid-template-columns:1fr 1fr;
+    align-content:start;
     gap:10px;
     padding:0 20px 20px;
     overflow-y:auto;
+    overscroll-behavior:contain;
+    overflow-anchor:none;
     flex:1 1 auto;
     scrollbar-width:thin;
   }
