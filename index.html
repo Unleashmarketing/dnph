@@ -383,56 +383,8 @@
     <h2 class="works-heading" id="panelHeading">Works</h2>
 
     <div class="gallery" id="view-works">
-      <div class="gallery-col">
-        <figure style="aspect-ratio:700/1052"><img src="images/g01.jpg" alt="Fashion-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g03.jpg" alt="Beauty-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g05.jpg" alt="Studio-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g07.jpg" alt="Beauty-Editorial" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g09.jpg" alt="Porträt-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g11.jpg" alt="Fashion-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g13.jpg" alt="Beauty-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g15.jpg" alt="Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1100"><img src="images/g17.jpg" alt="Editorial-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/949"><img src="images/g19.jpg" alt="Fashion-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g21.jpg" alt="Editorial-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g23.jpg" alt="Fashion-Editorial" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g25.jpg" alt="Studio-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g27.jpg" alt="Beauty-Editorial" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/944"><img src="images/g29.jpg" alt="Fashion-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1046"><img src="images/g31.jpg" alt="Studio-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1016"><img src="images/g33.jpg" alt="Fashion-Editorial" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/956"><img src="images/g35.jpg" alt="Beauty-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g37.jpg" alt="Studio-Editorial" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g39.jpg" alt="Social Marionettes" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g41.jpg" alt="Social Marionettes" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g43.jpg" alt="Social Marionettes" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g45.jpg" alt="Social Marionettes" loading="lazy"></figure>
-      </div>
-      <div class="gallery-col">
-        <figure style="aspect-ratio:700/1048"><img src="images/g02.jpg" alt="Editorial-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g04.jpg" alt="Fashion-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g06.jpg" alt="Editorial-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g08.jpg" alt="Fashion-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/924"><img src="images/g10.jpg" alt="Editorial-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g12.jpg" alt="Studio-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g14.jpg" alt="Fashion-Editorial" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/841"><img src="images/g16.jpg" alt="Fashion-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g18.jpg" alt="Beauty-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g20.jpg" alt="Studio-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g22.jpg" alt="Beauty-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g24.jpg" alt="Porträt-Aufnahme" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1010"><img src="images/g26.jpg" alt="Fashion-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1052"><img src="images/g28.jpg" alt="Editorial-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1144"><img src="images/g30.jpg" alt="Porträt-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/978"><img src="images/g32.jpg" alt="Beauty-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1048"><img src="images/g34.jpg" alt="Editorial-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/956"><img src="images/g36.jpg" alt="Fashion-Porträt" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1050"><img src="images/g38.jpg" alt="Porträt-Shooting" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g40.jpg" alt="Social Marionettes" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g42.jpg" alt="Social Marionettes" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g44.jpg" alt="Social Marionettes" loading="lazy"></figure>
-        <figure style="aspect-ratio:700/1012"><img src="images/g46.jpg" alt="Social Marionettes" loading="lazy"></figure>
-      </div>
+      <div class="gallery-col" id="galleryCol0"></div>
+      <div class="gallery-col" id="galleryCol1"></div>
     </div>
 
     <div class="panel-body info-body" id="view-info" hidden>
@@ -542,17 +494,11 @@
     });
   }
 
-  /* ---------- lightbox gallery ---------- */
-  const galleryImgs = Array.from(document.querySelectorAll('#view-works img'))
-    .sort((a, b) => {
-      const na = parseInt(a.src.match(/g(\d+)\.jpg/)[1], 10);
-      const nb = parseInt(b.src.match(/g(\d+)\.jpg/)[1], 10);
-      return na - nb;
-    });
-
+  /* ---------- gallery (loaded from data/gallery.json) + lightbox ---------- */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCounter = document.getElementById('lightboxCounter');
+  let galleryItems = [];
   let lightboxIndex = 0;
 
   function openLightbox(index){
@@ -568,25 +514,45 @@
   }
 
   function showLightboxImage(){
-    const img = galleryImgs[lightboxIndex];
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + galleryImgs.length;
+    const item = galleryItems[lightboxIndex];
+    lightboxImg.src = 'images/' + item.file;
+    lightboxImg.alt = item.alt || '';
+    lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + galleryItems.length;
   }
 
   function showPrev(){
-    lightboxIndex = (lightboxIndex - 1 + galleryImgs.length) % galleryImgs.length;
+    lightboxIndex = (lightboxIndex - 1 + galleryItems.length) % galleryItems.length;
     showLightboxImage();
   }
 
   function showNext(){
-    lightboxIndex = (lightboxIndex + 1) % galleryImgs.length;
+    lightboxIndex = (lightboxIndex + 1) % galleryItems.length;
     showLightboxImage();
   }
 
-  galleryImgs.forEach((img, i) => {
-    img.addEventListener('click', () => openLightbox(i));
-  });
+  async function loadGallery(){
+    const col0 = document.getElementById('galleryCol0');
+    const col1 = document.getElementById('galleryCol1');
+    try {
+      const res = await fetch('data/gallery.json', { cache: 'no-store' });
+      galleryItems = await res.json();
+    } catch (e) {
+      galleryItems = [];
+    }
+    galleryItems.forEach((item, i) => {
+      const figure = document.createElement('figure');
+      figure.style.aspectRatio = item.w + '/' + item.h;
+      const img = document.createElement('img');
+      img.src = 'images/' + item.file;
+      img.alt = item.alt || '';
+      img.loading = 'lazy';
+      img.addEventListener('click', () => openLightbox(i));
+      figure.appendChild(img);
+      (i % 2 === 0 ? col0 : col1).appendChild(figure);
+    });
+  }
+
+  loadGallery();
 
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   document.getElementById('lightboxPrev').addEventListener('click', showPrev);
