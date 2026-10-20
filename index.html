@@ -286,6 +286,67 @@
   .gallery-col figure:hover img{
     transform:scale(1.04);
   }
+  .gallery-col figure{
+    cursor:pointer;
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:rgba(10,10,10,.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:min(60px,6vh) min(80px,8vw);
+  }
+  .lightbox-img{
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    user-select:none;
+  }
+  .lightbox-close,
+  .lightbox-nav{
+    position:fixed;
+    background:none;
+    border:none;
+    color:#fff;
+    font-family:inherit;
+    cursor:pointer;
+    line-height:1;
+  }
+  .lightbox-close{
+    top:18px;
+    right:24px;
+    font-size:34px;
+    font-weight:300;
+  }
+  .lightbox-nav{
+    top:50%;
+    transform:translateY(-50%);
+    font-size:46px;
+    font-weight:300;
+    padding:10px 16px;
+  }
+  .lightbox-prev{left:6px;}
+  .lightbox-next{right:6px;}
+  .lightbox-counter{
+    position:fixed;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#fff;
+    font-size:13px;
+    letter-spacing:.04em;
+  }
+  @media (max-width:640px){
+    .lightbox{padding:70px 12px;}
+    .lightbox-nav{font-size:32px;padding:8px 10px;}
+  }
 
   @media (max-width:859px){
     .page{flex-direction:column;}
@@ -405,6 +466,14 @@
       </form>
     </div>
   </main>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Schließen">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Vorheriges Bild">‹</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nächstes Bild">›</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
 </div>
 
 <script>
@@ -472,4 +541,65 @@
       }
     });
   }
+
+  /* ---------- lightbox gallery ---------- */
+  const galleryImgs = Array.from(document.querySelectorAll('#view-works img'))
+    .sort((a, b) => {
+      const na = parseInt(a.src.match(/g(\d+)\.jpg/)[1], 10);
+      const nb = parseInt(b.src.match(/g(\d+)\.jpg/)[1], 10);
+      return na - nb;
+    });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  let lightboxIndex = 0;
+
+  function openLightbox(index){
+    lightboxIndex = index;
+    showLightboxImage();
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function showLightboxImage(){
+    const img = galleryImgs[lightboxIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + galleryImgs.length;
+  }
+
+  function showPrev(){
+    lightboxIndex = (lightboxIndex - 1 + galleryImgs.length) % galleryImgs.length;
+    showLightboxImage();
+  }
+
+  function showNext(){
+    lightboxIndex = (lightboxIndex + 1) % galleryImgs.length;
+    showLightboxImage();
+  }
+
+  galleryImgs.forEach((img, i) => {
+    img.addEventListener('click', () => openLightbox(i));
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+  document.getElementById('lightboxNext').addEventListener('click', showNext);
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
 </script>
